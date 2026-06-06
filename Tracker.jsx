@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { STATUS_CONFIG } from '../data.js'
+import ReviewIdealButton from './ReviewIdealPDF.jsx'
 
 export default function Tracker({ prospects, onAdd, onStatusChange, onDelete }) {
   const [filter, setFilter] = useState('All')
@@ -58,7 +59,10 @@ function ProspectCard({ p, onStatusChange, onDelete }) {
     <div style={{ background: '#0f172a', border: '1px solid #1e293b', borderRadius: '12px', padding: '14px', marginBottom: '10px' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '8px' }}>
         <div style={{ flex: 1 }}>
-          <div style={{ fontSize: '14px', color: '#f1f5f9', fontWeight: '500', marginBottom: '2px' }}>{p.name}</div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '2px' }}>
+            <div style={{ fontSize: '14px', color: '#f1f5f9', fontWeight: '500' }}>{p.name}</div>
+            <ReviewIdealButton prospect={p} />
+          </div>
           {p.igHandle && (
             <a href={`https://instagram.com/${p.igHandle.replace('@','')}`} target="_blank" rel="noreferrer"
               style={{ fontSize: '11px', color: '#60a5fa', textDecoration: 'none' }}>
